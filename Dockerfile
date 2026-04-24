@@ -34,12 +34,11 @@ USER www-data
 # Install dependencies
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
-# Switch back to root for permissions
+# Ensure storage and cache are group-writable by www-data
 USER root
-
-# Final permission setup
-RUN chmod -R 777 /var/www/storage && \
-    chmod -R 777 /var/www/bootstrap/cache
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache && \
+    chmod -R 775 /var/www/storage /var/www/bootstrap/cache
+USER www-data
 
 # Expose port
 EXPOSE 9000

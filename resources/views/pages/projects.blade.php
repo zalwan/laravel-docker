@@ -36,11 +36,11 @@
 
             <p class="card-text text-muted">{{ $project->description }}</p>
 
-            @if ($project->teknologi)
+            @if (!empty($project->teknologi))
               <div class="d-flex flex-wrap gap-1 mt-3">
-                @foreach (explode(',', $project->teknologi) as $tech)
+                @foreach ($project->teknologi as $tech)
                   <span class="badge bg-primary bg-opacity-10 text-primary border border-primary-subtle">
-                    {{ trim($tech) }}
+                    {{ $tech }}
                   </span>
                 @endforeach
               </div>
