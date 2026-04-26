@@ -382,10 +382,3 @@ When deploying to production:
 5. Configure environment-specific settings
 6. Use Docker registry for images
 7. Set up proper backup strategy for volumes
-
-## Support & Documentation
-
-- [Laravel Documentation](https://laravel.com/docs)
-- [Docker Documentation](https://docs.docker.com)
-- [Docker Compose Docum
- 
