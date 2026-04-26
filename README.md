@@ -1,4 +1,4 @@
-# Laravel + Docker Project
+# Laravel 11 + Docker Project
 
 A complete Laravel 11 application setup with Docker containerization, MySQL database, Redis cache, and Nginx web server.
 
@@ -387,11 +387,5 @@ When deploying to production:
 
 - [Laravel Documentation](https://laravel.com/docs)
 - [Docker Documentation](https://docs.docker.com)
-- [Docker Compose Documentation](https://docs.docker.com/compose)
-
-## License
-
-MIT License
-#   l a r a v e l - d o c k e r 
- 
+- [Docker Compose Docum
  
