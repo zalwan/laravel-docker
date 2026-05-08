@@ -1,6 +1,6 @@
-# Laravel 11 + Docker Project
+# Laravel 12 + Docker Project
 
-A complete Laravel 11 application setup with Docker containerization, MySQL database, Redis cache, and Nginx web server.
+A complete Laravel 12 application setup with Docker containerization, MySQL database, Redis cache, and Nginx web server.
 
 ## 📚 Documentation
 

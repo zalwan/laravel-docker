@@ -33,7 +33,7 @@
                             </div>
 
 
-                            {{-- <p class="card-text text-muted">{{ $project->description }}</p> --}}
+                            <p class="card-text text-muted">{{ $project->description }}</p>
 
                             @if (!empty($project->teknologi))
                                 <div class="d-flex flex-wrap gap-1 mt-3">

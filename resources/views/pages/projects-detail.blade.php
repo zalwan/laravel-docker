@@ -48,7 +48,7 @@
                             </div>
                         @endif
 
-                        <a href="{{ route('projects', $project->id) }}" class="mt-3 btn btn-primary w-100">
+                        <a href="{{ route('projects') }}" class="mt-3 btn btn-primary w-100">
                             kembali</a>
                     </div>
                 </div>

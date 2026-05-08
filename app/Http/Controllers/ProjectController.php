@@ -9,20 +9,15 @@ class ProjectController extends Controller
 {
     public function index(): View
     {
-        // $projects = Project::latest()->get();
+        $projects = Project::latest()->paginate(2);
 
-        // return view('pages.projects', [
-        //     'projects' => $projects,
-        // ]);
-
-        // $projects = Project::all();
-        $projects = Project::paginate(2);
-        return view("pages.projects", compact("projects"));
+        return view('pages.projects', compact('projects'));
     }
 
-    public function show($id): View
+    public function show(int $id): View
     {
         $project = Project::findOrFail($id);
+
         return view('pages.projects-detail', compact('project'));
     }
 }

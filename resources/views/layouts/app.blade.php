@@ -14,22 +14,19 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary justify-content-between">
         <div class="container">
-            <a href="/" class="nav-brand">Web profile</a>
+            <a href="{{ route('home') }}" class="navbar-brand">Web profile</a>
 
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="/" class="{{ request()->is('/') ? 'active' : '' }}">Home</a>
-                    </li> -->
                     <li class="nav-item">
-                        <a class="nav-link" href="/projects" class="{{ request()->is('/projects') ? 'active' : '' }}">Project</a>
+                        <a class="nav-link {{ request()->routeIs('projects*') ? 'active' : '' }}" href="{{ route('projects') }}">Project</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/about" class="{{ request()->is('about') ? 'active' : '' }}">About</a>
+                        <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/contact" class="{{ request()->is('contact') ? 'active' : '' }}">Contact</a>
+                        <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Contact</a>
                     </li>
                 </ul>
             </div>
