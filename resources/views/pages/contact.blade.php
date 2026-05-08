@@ -11,22 +11,16 @@
                     <p class="lead text-muted">Hubungi BAWANA untuk diskusi kebutuhan digital learning dan employee development perusahaan.</p>
 
                     <div class="list-group list-group-flush my-4">
-                        <div class="list-group-item px-0 py-3">
-                            <h6 class="mb-1 text-muted text-uppercase small fw-bold">Perusahaan</h6>
-                            <p class="mb-0 fw-medium fs-5">PT Meta BAWANA Indonesia</p>
-                        </div>
-                        <div class="list-group-item px-0 py-3">
-                            <h6 class="mb-1 text-muted text-uppercase small fw-bold">Alamat</h6>
-                            <p class="mb-0 fw-medium">Ruko Golden Boulevard C30-31, Bumi Serpong Damai, Tangerang 15320, Indonesia</p>
-                        </div>
-                        <div class="list-group-item px-0 py-3">
-                            <h6 class="mb-1 text-muted text-uppercase small fw-bold">Website</h6>
-                            <a href="https://bawana.com" class="fw-medium fs-5 text-decoration-none">bawana.com</a>
-                        </div>
-                        <div class="list-group-item px-0 py-3 border-bottom-0">
-                            <h6 class="mb-1 text-muted text-uppercase small fw-bold">LinkedIn</h6>
-                            <a href="https://id.linkedin.com/company/meta-bawana-indonesia" class="fw-medium text-decoration-none">PT Meta Bawana Indonesia</a>
-                        </div>
+                        @foreach ($contacts as $contact)
+                            <div class="list-group-item px-0 py-3 @if ($loop->last) border-bottom-0 @endif">
+                                <h6 class="mb-1 text-muted text-uppercase small fw-bold">{{ $contact->label }}</h6>
+                                @if ($contact->description)
+                                    <a href="{{ $contact->description }}" class="fw-medium text-decoration-none">{{ $contact->value }}</a>
+                                @else
+                                    <p class="mb-0 fw-medium @if ($contact->label === 'Perusahaan') fs-5 @endif">{{ $contact->value }}</p>
+                                @endif
+                            </div>
+                        @endforeach
                     </div>
 
                     <div class="d-flex gap-2">

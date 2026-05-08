@@ -34,8 +34,8 @@
             <div class="col-md-3 col-6">
                 <div class="card soft-card h-100">
                     <div class="card-body p-4 text-center">
-                        <h2 class="fw-bold text-primary mb-1">{{ $stat['value'] }}</h2>
-                        <p class="text-muted mb-0">{{ $stat['label'] }}</p>
+                        <h2 class="fw-bold text-primary mb-1">{{ $stat->value }}</h2>
+                        <p class="text-muted mb-0">{{ $stat->label }}</p>
                     </div>
                 </div>
             </div>

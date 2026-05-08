@@ -16,10 +16,10 @@
                 <div class="card-body p-5">
                     <h2 class="fw-bold mb-4">Identitas Perusahaan</h2>
                     <div class="list-group list-group-flush">
-                        @foreach ($identity as $label => $value)
+                        @foreach ($identity as $item)
                             <div class="list-group-item px-0 d-flex justify-content-between gap-4">
-                                <span class="text-muted">{{ $label }}</span>
-                                <span class="fw-semibold text-end">{{ $value }}</span>
+                                <span class="text-muted">{{ $item->label }}</span>
+                                <span class="fw-semibold text-end">{{ $item->value }}</span>
                             </div>
                         @endforeach
                     </div>

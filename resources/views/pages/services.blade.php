@@ -13,10 +13,10 @@
             <div class="col-lg-6">
                 <div class="card soft-card h-100">
                     <div class="card-body p-5">
-                        <h3 class="fw-bold mb-3">{{ $service['title'] }}</h3>
-                        <p class="text-muted">{{ $service['description'] }}</p>
+                        <h3 class="fw-bold mb-3">{{ $service->title }}</h3>
+                        <p class="text-muted">{{ $service->description }}</p>
                         <div class="d-flex flex-wrap gap-2 mt-4">
-                            @foreach ($service['features'] as $feature)
+                            @foreach ($service->items ?? [] as $feature)
                                 <span class="badge bg-primary bg-opacity-10 text-primary border border-primary-subtle px-3 py-2">{{ $feature }}</span>
                             @endforeach
                         </div>
