@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property ?string $value
  * @property ?string $label
  * @property ?array $items
+ * @property ?string $image
  * @property int $sort_order
  */
 class CompanyContent extends Model
@@ -23,6 +24,7 @@ class CompanyContent extends Model
         'value',
         'label',
         'items',
+        'image',
         'sort_order',
     ];
 

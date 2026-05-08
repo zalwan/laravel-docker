@@ -48,6 +48,7 @@ class ExampleTest extends TestCase
         $this->assertGreaterThanOrEqual(10, CompanyContent::count());
         $this->assertSame(4, CompanyContent::where('section', 'service')->count());
         $this->assertSame(10, CompanyContent::where('section', 'client')->count());
+        $this->assertSame(0, CompanyContent::whereNull('image')->count());
     }
 
     public function test_company_content_items_are_cast_to_array(): void
@@ -69,6 +70,8 @@ class ExampleTest extends TestCase
         $response = $this->get('/contents');
 
         $response->assertStatus(200);
+        $response->assertSee('Lihat Detail');
+        $response->assertSee('images/projects/', false);
         $response->assertViewHas('contents', function ($contents) {
             return $contents->perPage() === 10
                 && $contents->count() === 10
@@ -76,5 +79,19 @@ class ExampleTest extends TestCase
         });
 
         $this->get('/contents?page=2')->assertStatus(200);
+    }
+
+    public function test_dynamic_content_detail_page_is_available(): void
+    {
+        $this->seed(CompanyContentSeeder::class);
+
+        $content = CompanyContent::where('section', 'service')->firstOrFail();
+
+        $response = $this->get(route('contents.show', $content));
+
+        $response->assertStatus(200);
+        $response->assertSee($content->title);
+        $response->assertSee($content->description);
+        $response->assertSee($content->image);
     }
 }

@@ -15,4 +15,9 @@ class ContentController extends Controller
 
         return view('pages.contents', compact('contents'));
     }
+
+    public function show(CompanyContent $content): View
+    {
+        return view('pages.contents-detail', compact('content'));
+    }
 }

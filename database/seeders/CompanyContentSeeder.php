@@ -9,6 +9,7 @@ class CompanyContentSeeder extends Seeder
 {
     public function run(): void
     {
+        $sampleImages = ['elearning.png', 'erp.png', 'hrms.png'];
         $contents = [
             [
                 'section' => 'stat',
@@ -236,7 +237,9 @@ class CompanyContentSeeder extends Seeder
             ],
         ];
 
-        foreach ($contents as $content) {
+        foreach ($contents as $index => $content) {
+            $content['image'] ??= $sampleImages[$index % count($sampleImages)];
+
             CompanyContent::updateOrCreate(
                 [
                     'section' => $content['section'],

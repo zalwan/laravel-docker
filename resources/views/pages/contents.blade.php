@@ -14,6 +14,10 @@
         @forelse ($contents as $content)
             <div class="col-md-6">
                 <div class="card soft-card h-100">
+                    @if ($content->image)
+                        <img src="{{ asset('images/projects/' . $content->image) }}" alt="{{ $content->title ?? $content->label ?? 'Dynamic content image' }}"
+                            class="card-img-top" style="height: 180px; object-fit: cover;" onerror="this.style.display='none'">
+                    @endif
                     <div class="card-body p-4">
                         <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
                             <span class="badge bg-primary bg-opacity-10 text-primary border border-primary-subtle px-3 py-2">
@@ -33,12 +37,16 @@
                         @endif
 
                         @if (!empty($content->items))
-                            <div class="d-flex flex-wrap gap-2">
+                            <div class="d-flex flex-wrap gap-2 mb-3">
                                 @foreach ($content->items as $item)
                                     <span class="badge bg-secondary bg-opacity-10 text-secondary border px-3 py-2">{{ $item }}</span>
                                 @endforeach
                             </div>
                         @endif
+
+                        <a href="{{ route('contents.show', $content) }}" class="btn btn-primary w-100 mt-2">
+                            Lihat Detail
+                        </a>
                     </div>
                 </div>
             </div>
