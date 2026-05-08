@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Models\CompanyContent;
-use Database\Seeders\CompanyContentSeeder;
+use App\Models\Destination;
+use Database\Seeders\DestinationSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -11,87 +11,69 @@ class ExampleTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_homepage_returns_company_profile_content(): void
+    public function test_homepage_returns_uts_theme_content(): void
     {
-        $this->seed(CompanyContentSeeder::class);
+        $this->seed(DestinationSeeder::class);
 
         $response = $this->get('/');
 
-        $response->assertStatus(200);
-        $response->assertSee('BAWANA');
-        $response->assertSee('Digital learning untuk pengembangan talenta perusahaan.');
+        $response->assertOk();
+        $response->assertSee('Daftar Wisata Alam Indonesia');
+        $response->assertSee('NIM 241011750067');
+        $response->assertSee('Digit akhir 7');
     }
 
-    public function test_company_profile_pages_are_available(): void
+    public function test_destination_seeder_creates_required_dummy_data(): void
     {
-        $this->seed(CompanyContentSeeder::class);
+        $this->seed(DestinationSeeder::class);
 
-        $pages = [
-            '/about' => 'Tentang BAWANA',
-            '/services' => 'Produk',
-            '/contents' => 'Dynamic Contents',
-            '/contact' => 'PT Meta BAWANA Indonesia',
-        ];
+        $this->assertSame(10, Destination::count());
+        $this->assertDatabaseHas('destinations', [
+            'name' => 'Raja Ampat',
+            'region' => 'Papua Barat Daya',
+        ]);
+    }
 
-        foreach ($pages as $uri => $content) {
-            $response = $this->get($uri);
+    public function test_destination_images_exist_in_public_assets_images(): void
+    {
+        $this->seed(DestinationSeeder::class);
 
-            $response->assertStatus(200);
-            $response->assertSee($content);
+        foreach (Destination::all() as $destination) {
+            $this->assertFileExists(public_path('assets/images/'.$destination->image));
         }
     }
 
-    public function test_company_content_seeder_creates_dynamic_content(): void
+    public function test_destination_list_page_is_paginated_and_uses_cards(): void
     {
-        $this->seed(CompanyContentSeeder::class);
+        $this->seed(DestinationSeeder::class);
 
-        $this->assertGreaterThanOrEqual(10, CompanyContent::count());
-        $this->assertSame(4, CompanyContent::where('section', 'service')->count());
-        $this->assertSame(10, CompanyContent::where('section', 'client')->count());
-        $this->assertSame(0, CompanyContent::whereNull('image')->count());
-    }
+        $response = $this->get('/destinations');
 
-    public function test_company_content_items_are_cast_to_array(): void
-    {
-        $content = CompanyContent::create([
-            'section' => 'service',
-            'title' => 'Cast Test',
-            'items' => ['AI Learning', 'Analytics'],
-        ]);
-
-        $this->assertIsArray($content->fresh()->items);
-        $this->assertSame(['AI Learning', 'Analytics'], $content->fresh()->items);
-    }
-
-    public function test_dynamic_contents_page_is_paginated(): void
-    {
-        $this->seed(CompanyContentSeeder::class);
-
-        $response = $this->get('/contents');
-
-        $response->assertStatus(200);
+        $response->assertOk();
+        $response->assertSee('Daftar Wisata Alam');
         $response->assertSee('Lihat Detail');
-        $response->assertSee('images/projects/', false);
-        $response->assertViewHas('contents', function ($contents) {
-            return $contents->perPage() === 10
-                && $contents->count() === 10
-                && $contents->total() >= 10;
+        $response->assertSee('assets/images/', false);
+        $response->assertViewHas('destinations', function ($destinations) {
+            return $destinations->perPage() === 6
+                && $destinations->count() === 6
+                && $destinations->total() === 10;
         });
 
-        $this->get('/contents?page=2')->assertStatus(200);
+        $this->get('/destinations?page=2')->assertOk();
     }
 
-    public function test_dynamic_content_detail_page_is_available(): void
+    public function test_destination_detail_page_is_available(): void
     {
-        $this->seed(CompanyContentSeeder::class);
+        $this->seed(DestinationSeeder::class);
 
-        $content = CompanyContent::where('section', 'service')->firstOrFail();
+        $destination = Destination::where('name', 'Kawah Ijen')->firstOrFail();
 
-        $response = $this->get(route('contents.show', $content));
+        $response = $this->get(route('destinations.show', $destination));
 
-        $response->assertStatus(200);
-        $response->assertSee($content->title);
-        $response->assertSee($content->description);
-        $response->assertSee($content->image);
+        $response->assertOk();
+        $response->assertSee($destination->name);
+        $response->assertSee($destination->region);
+        $response->assertSee($destination->description);
+        $response->assertSee($destination->image);
     }
 }

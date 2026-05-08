@@ -2,23 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CompanyContent;
+use App\Models\Destination;
 use Illuminate\View\View;
 
 class HomeController extends Controller
 {
     public function index(): View
     {
-        $stats = CompanyContent::where('section', 'stat')
-            ->orderBy('sort_order')
+        $featuredDestinations = Destination::orderBy('ticket_price')
+            ->limit(3)
             ->get();
-        $highlights = CompanyContent::where('section', 'highlight')
-            ->orderBy('sort_order')
-            ->pluck('title');
 
         return view('pages.home', [
-            'stats' => $stats,
-            'highlights' => $highlights,
+            'featuredDestinations' => $featuredDestinations,
+            'destinationCount' => Destination::count(),
         ]);
     }
 }
