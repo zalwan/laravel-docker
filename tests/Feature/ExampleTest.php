@@ -11,7 +11,7 @@ class ExampleTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_homepage_returns_uts_theme_content(): void
+    public function test_homepage_returns_catalog_identity_content(): void
     {
         $this->seed(DestinationSeeder::class);
 

@@ -1,55 +1,44 @@
-# UTS Rekayasa Web - Daftar Wisata Alam
+# Katalog Wisata Alam
 
-Aplikasi ini dibuat untuk memenuhi Ujian Tengah Semester mata kuliah Rekayasa Web. Project menggunakan Laravel, Blade Template, Bootstrap lokal, MySQL, migration, seeder, dan halaman web dinamis berbasis database.
+Katalog Wisata Alam adalah aplikasi web berbasis Laravel untuk menampilkan daftar destinasi wisata alam Indonesia. Aplikasi ini memakai data dinamis dari MySQL, Blade Template untuk tampilan, Bootstrap lokal untuk styling, serta gambar destinasi yang disimpan di dalam project agar halaman tetap konsisten saat dijalankan.
 
-## Identitas Project
+## Ringkasan
 
 | Keterangan | Nilai |
 | --- | --- |
-| Nama | Rizal Suryawan |
-| NIM | `241011750067` |
-| Digit terakhir NIM | `7` |
-| Tema digit 7 | Daftar Wisata Alam |
-| Nama database | `db_uts_241011750067` |
-| Nama tabel utama | `destinations` |
+| Nama pengembang | Rizal Suryawan |
+| Nomor identitas | `241011750067` |
+| Tema aplikasi | Daftar Wisata Alam |
+| Database | `db_uts_241011750067` |
+| Tabel utama | `destinations` |
 | Framework | Laravel |
 | Template engine | Blade |
 | CSS framework | Bootstrap lokal |
 
-## Kesesuaian Dengan Soal
+## Fitur Utama
 
-| Requirement UTS | Implementasi di project | Status |
-| --- | --- | --- |
-| Menggunakan Laravel | Struktur Laravel lengkap tersedia di repo | Sesuai |
-| Menggunakan Blade Template | View berada di `resources/views` dan memakai layout Blade | Sesuai |
-| Menggunakan Bootstrap | Asset lokal berada di `public/Bootstrap` | Sesuai |
-| Tema sesuai digit akhir NIM | Digit akhir `7`, tema `Daftar Wisata Alam` | Sesuai |
-| Database khusus UTS | Database memakai `db_uts_241011750067` | Sesuai |
-| Membuat tabel `destinations` | Migration `2026_05_09_020000_create_destinations_table.php` | Sesuai |
-| Kolom `id` | Dibuat oleh `$table->id()` | Sesuai |
-| Kolom `name` | `$table->string('name')` | Sesuai |
-| Kolom `region` | `$table->string('region')` | Sesuai |
-| Kolom `description` | `$table->text('description')` | Sesuai |
-| Kolom `image` | `$table->string('image')` | Sesuai |
-| Kolom `ticket_price` | `$table->decimal('ticket_price', 12, 2)` | Sesuai |
-| Data dummy dari seeder | `DestinationSeeder` mengisi 10 data wisata alam | Sesuai |
-| Gambar di public assets | Semua gambar berada di `public/assets/images` | Sesuai |
-| Halaman daftar data | Route `/destinations` menampilkan card dan pagination | Sesuai |
-| Halaman detail data | Route `/destinations/{destination}` menampilkan detail wisata | Sesuai |
-| Navigasi antar halaman | Navbar berisi Home, About, Destinations, Contact | Sesuai |
-
-## Fitur Aplikasi
-
-- Homepage dengan hero image, ringkasan statistik, dan destinasi unggulan.
-- Halaman daftar wisata alam dengan card, gambar, wilayah, deskripsi singkat, harga tiket, dan tombol detail.
-- Pagination daftar wisata, 6 data per halaman, dengan ringkasan hasil di bawah pagination.
-- Halaman detail wisata berisi gambar besar, wilayah, harga tiket, deskripsi, dan informasi destinasi.
-- Halaman About berisi identitas UTS dan teknologi yang digunakan.
-- Halaman Contact berisi informasi pengembang dan form tampilan.
-- Data destinasi bersifat dinamis dari database MySQL melalui model `Destination`.
-- Seeder menyediakan 10 data wisata alam Indonesia.
-- Gambar destinasi menggunakan foto dari Wikimedia Commons dan disimpan lokal.
+- Homepage dengan hero image, statistik singkat, dan destinasi unggulan.
+- Halaman daftar wisata alam berisi card destinasi, gambar, wilayah, deskripsi singkat, dan harga tiket.
+- Pagination pada daftar destinasi, 6 data per halaman, dengan ringkasan jumlah data di bawah pagination.
+- Halaman detail destinasi berisi gambar besar, wilayah, harga tiket, deskripsi, dan metadata destinasi.
+- Halaman About untuk menjelaskan identitas aplikasi dan teknologi yang digunakan.
+- Halaman Contact untuk informasi pengembang dan form tampilan.
+- Data destinasi bersifat dinamis dari database melalui model `Destination`.
+- Seeder menyediakan 10 data destinasi wisata alam Indonesia.
+- Gambar destinasi memakai foto lokal dari `public/assets/images`.
 - Atribusi gambar tersedia di `public/assets/images/ATTRIBUTIONS.md`.
+
+## Stack Teknologi
+
+| Area | Teknologi |
+| --- | --- |
+| Backend | Laravel |
+| View | Blade Template |
+| Styling | Bootstrap lokal |
+| Database | MySQL |
+| ORM | Eloquent |
+| Asset | Public assets |
+| Testing | Laravel Feature Test |
 
 ## Struktur Database
 
@@ -66,9 +55,15 @@ Tabel utama: `destinations`
 | `created_at` | timestamp | Waktu data dibuat |
 | `updated_at` | timestamp | Waktu data diperbarui |
 
-## Data Seeder
+Migration tabel berada di:
 
-Seeder utama berada di `database/seeders/DestinationSeeder.php`. Jumlah data yang disediakan: 10 destinasi.
+```text
+database/migrations/2026_05_09_020000_create_destinations_table.php
+```
+
+## Data Awal
+
+Seeder utama berada di `database/seeders/DestinationSeeder.php`. Seeder ini mengisi 10 destinasi awal.
 
 | No | Nama Destinasi | Wilayah | Gambar | Harga Tiket |
 | --- | --- | --- | --- | --- |
@@ -127,10 +122,10 @@ routes/
 | Method | URL | Nama Route | Controller | Fungsi |
 | --- | --- | --- | --- | --- |
 | GET | `/` | `home` | `HomeController@index` | Homepage |
-| GET | `/about` | `about` | `PageController@about` | Halaman informasi aplikasi |
-| GET | `/destinations` | `destinations` | `DestinationController@index` | Daftar wisata alam |
-| GET | `/destinations/{destination}` | `destinations.show` | `DestinationController@show` | Detail wisata alam |
-| GET | `/contact` | `contact` | `PageController@contact` | Halaman contact |
+| GET | `/about` | `about` | `PageController@about` | Informasi aplikasi |
+| GET | `/destinations` | `destinations` | `DestinationController@index` | Daftar destinasi |
+| GET | `/destinations/{destination}` | `destinations.show` | `DestinationController@show` | Detail destinasi |
+| GET | `/contact` | `contact` | `PageController@contact` | Kontak |
 
 ## Cara Menjalankan Project
 
@@ -140,7 +135,7 @@ Pastikan Docker service sudah berjalan, lalu jalankan:
 docker compose up -d
 ```
 
-Buat database khusus UTS dan grant user Laravel:
+Buat database dan berikan akses untuk user Laravel:
 
 ```bash
 docker compose exec db mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS db_uts_241011750067 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; GRANT ALL PRIVILEGES ON db_uts_241011750067.* TO 'laravel'@'%'; FLUSH PRIVILEGES;"
@@ -165,7 +160,7 @@ http://localhost:8000/destinations
 Konfigurasi utama ada di `.env` dan contoh konfigurasi tersedia di `.env.example`.
 
 ```env
-APP_NAME="UTS Rizal Suryawan"
+APP_NAME="Katalog Wisata Alam"
 APP_URL=http://localhost:8000
 
 DB_CONNECTION=mysql
@@ -178,19 +173,19 @@ DB_PASSWORD=secret
 
 ## Verifikasi Manual
 
-Periksa route:
+Periksa daftar route:
 
 ```bash
 docker compose exec app php artisan route:list
 ```
 
-Periksa migration:
+Periksa status migration:
 
 ```bash
 docker compose exec app php artisan migrate:status
 ```
 
-Periksa tabel dan jumlah data:
+Periksa struktur tabel dan jumlah data:
 
 ```bash
 docker compose exec db mysql -ularavel -psecret db_uts_241011750067 -e "DESCRIBE destinations; SELECT COUNT(*) AS total_destinations FROM destinations;"
@@ -212,7 +207,7 @@ docker compose exec app php artisan test
 
 Test yang tersedia memeriksa:
 
-- Homepage menampilkan tema UTS dan identitas Rizal Suryawan.
+- Homepage menampilkan tema aplikasi dan identitas pengembang.
 - Seeder membuat 10 data destinasi.
 - File gambar destinasi tersedia.
 - Halaman daftar destinasi memakai pagination.
@@ -221,7 +216,7 @@ Test yang tersedia memeriksa:
 
 ## Catatan Gambar
 
-Semua gambar destinasi disimpan lokal di `public/assets/images` agar aplikasi tetap bisa menampilkan asset tanpa mengambil gambar langsung dari internet saat runtime.
+Semua gambar destinasi disimpan lokal di `public/assets/images` agar aplikasi dapat menampilkan asset tanpa mengambil gambar langsung dari internet saat runtime.
 
 Daftar sumber dan lisensi gambar tersedia di:
 
@@ -229,6 +224,6 @@ Daftar sumber dan lisensi gambar tersedia di:
 public/assets/images/ATTRIBUTIONS.md
 ```
 
-## Kesimpulan
+## Catatan Pengembangan
 
-Project ini sudah memenuhi requirement utama UTS Rekayasa Web milik Rizal Suryawan dengan NIM `241011750067` dan tema `Daftar Wisata Alam`: menggunakan Laravel, Blade, Bootstrap, migration, seeder, database MySQL, data dinamis, gambar lokal, halaman daftar, halaman detail, dan navigasi.
+Project ini berfokus pada implementasi aplikasi katalog yang sederhana, rapi, dan mudah diperiksa. Struktur data dipisahkan melalui migration dan seeder, tampilan dipisahkan melalui Blade, dan akses halaman dikelola melalui route serta controller Laravel.
