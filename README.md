@@ -6,6 +6,7 @@ Aplikasi ini dibuat untuk memenuhi Ujian Tengah Semester mata kuliah Rekayasa We
 
 | Keterangan | Nilai |
 | --- | --- |
+| Nama | Rizal Suryawan |
 | NIM | `241011750067` |
 | Digit terakhir NIM | `7` |
 | Tema digit 7 | Daftar Wisata Alam |
@@ -164,7 +165,7 @@ http://localhost:8000/destinations
 Konfigurasi utama ada di `.env` dan contoh konfigurasi tersedia di `.env.example`.
 
 ```env
-APP_NAME=UTS_241011750067
+APP_NAME="UTS Rizal Suryawan"
 APP_URL=http://localhost:8000
 
 DB_CONNECTION=mysql
@@ -211,7 +212,7 @@ docker compose exec app php artisan test
 
 Test yang tersedia memeriksa:
 
-- Homepage menampilkan tema UTS.
+- Homepage menampilkan tema UTS dan identitas Rizal Suryawan.
 - Seeder membuat 10 data destinasi.
 - File gambar destinasi tersedia.
 - Halaman daftar destinasi memakai pagination.
@@ -230,4 +231,4 @@ public/assets/images/ATTRIBUTIONS.md
 
 ## Kesimpulan
 
-Project ini sudah memenuhi requirement utama UTS Rekayasa Web untuk NIM `241011750067` dengan tema `Daftar Wisata Alam`: menggunakan Laravel, Blade, Bootstrap, migration, seeder, database MySQL, data dinamis, gambar lokal, halaman daftar, halaman detail, dan navigasi.
+Project ini sudah memenuhi requirement utama UTS Rekayasa Web milik Rizal Suryawan dengan NIM `241011750067` dan tema `Daftar Wisata Alam`: menggunakan Laravel, Blade, Bootstrap, migration, seeder, database MySQL, data dinamis, gambar lokal, halaman daftar, halaman detail, dan navigasi.

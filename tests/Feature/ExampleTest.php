@@ -19,6 +19,7 @@ class ExampleTest extends TestCase
 
         $response->assertOk();
         $response->assertSee('Jelajahi wisata alam terbaik Indonesia.');
+        $response->assertSee('Rizal Suryawan');
         $response->assertSee('NIM 241011750067');
         $response->assertSee('Digit akhir 7');
     }
@@ -69,11 +70,13 @@ class ExampleTest extends TestCase
         $this->get('/about')
             ->assertOk()
             ->assertSee('Tentang Aplikasi')
+            ->assertSee('Rizal Suryawan')
             ->assertSee('db_uts_241011750067');
 
         $this->get('/contact')
             ->assertOk()
             ->assertSee('Contact')
+            ->assertSee('Rizal Suryawan')
             ->assertSee('NIM 241011750067');
     }
 

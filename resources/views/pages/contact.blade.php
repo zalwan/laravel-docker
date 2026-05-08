@@ -17,7 +17,8 @@
                             <div class="list-group list-group-flush">
                                 <div class="list-group-item px-0 py-3">
                                     <h6 class="mb-1 text-muted text-uppercase small fw-bold">Pengembang</h6>
-                                    <p class="mb-0 fw-semibold">NIM 241011750067</p>
+                                    <p class="mb-0 fw-semibold">Rizal Suryawan</p>
+                                    <p class="mb-0 text-muted">NIM 241011750067</p>
                                 </div>
                                 <div class="list-group-item px-0 py-3">
                                     <h6 class="mb-1 text-muted text-uppercase small fw-bold">Mata Kuliah</h6>

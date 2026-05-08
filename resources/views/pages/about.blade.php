@@ -17,6 +17,10 @@
                     <h2 class="fw-bold mb-4">Identitas Pengerjaan</h2>
                     <div class="list-group list-group-flush">
                         <div class="list-group-item px-0 d-flex justify-content-between gap-4">
+                            <span class="text-muted">Nama</span>
+                            <span class="fw-semibold text-end">Rizal Suryawan</span>
+                        </div>
+                        <div class="list-group-item px-0 d-flex justify-content-between gap-4">
                             <span class="text-muted">NIM</span>
                             <span class="fw-semibold text-end">241011750067</span>
                         </div>

@@ -127,7 +127,7 @@
 
     <footer class="py-4 bg-dark text-center text-white">
         <div class="container">
-            <span class="fw-semibold">UTS Rekayasa Web</span> &middot; NIM 241011750067 &middot; Tema Daftar Wisata Alam
+            <span class="fw-semibold">UTS Rekayasa Web</span> &middot; Rizal Suryawan &middot; NIM 241011750067 &middot; Tema Daftar Wisata Alam
         </div>
     </footer>
 

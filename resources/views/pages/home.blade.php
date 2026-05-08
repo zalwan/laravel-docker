@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'UTS 241011750067 - Daftar Wisata Alam')
+@section('title', 'UTS Rizal Suryawan - Daftar Wisata Alam')
 
 @section('content')
 <section class="hero-band">
@@ -14,6 +14,7 @@
                     Katalog destinasi wisata alam berbasis Laravel, Blade Template, Bootstrap, migration, seeder, dan database MySQL khusus UTS.
                 </p>
                 <div class="d-flex flex-wrap gap-2 mb-4">
+                    <span class="badge bg-white bg-opacity-25 text-white border px-3 py-2">Rizal Suryawan</span>
                     <span class="badge bg-white bg-opacity-25 text-white border px-3 py-2">NIM 241011750067</span>
                     <span class="badge bg-white bg-opacity-25 text-white border px-3 py-2">Digit akhir 7</span>
                     <span class="badge bg-white bg-opacity-25 text-white border px-3 py-2">Tema Wisata Alam</span>
