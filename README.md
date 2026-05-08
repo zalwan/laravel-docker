@@ -7,6 +7,7 @@ Aplikasi Laravel untuk Ujian Tengah Semester mata kuliah Rekayasa Web.
 - NIM: 241011750067
 - Digit terakhir NIM: 7
 - Tema: Daftar Wisata Alam
+- Database: `db_uts_241011750067`
 - Nama tabel: `destinations`
 
 ## Struktur Tabel
@@ -34,6 +35,7 @@ Kolom tabel `destinations`:
 
 ```bash
 docker compose up -d
+docker compose exec db mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS db_uts_241011750067 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; GRANT ALL PRIVILEGES ON db_uts_241011750067.* TO 'laravel'@'%'; FLUSH PRIVILEGES;"
 docker compose exec app php artisan migrate --force
 docker compose exec app php artisan db:seed --force
 ```
