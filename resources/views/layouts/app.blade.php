@@ -12,8 +12,8 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background: #f8fafc;
-            color: #1f2937;
+            background: #f3f7f2;
+            color: #1f2933;
         }
 
         .navbar-brand {
@@ -31,19 +31,61 @@
 
         .soft-card {
             border: 0;
-            box-shadow: 0 10px 30px rgba(15, 23, 42, .08);
+            border-radius: 8px;
+            box-shadow: 0 14px 34px rgba(20, 83, 45, .11);
+        }
+
+        .hero-band {
+            background: linear-gradient(135deg, #0f5132 0%, #146c43 48%, #0d6efd 100%);
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .hero-band .text-muted {
+            color: rgba(255, 255, 255, .78) !important;
+        }
+
+        .hero-media {
+            height: 430px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, .25);
+        }
+
+        .destination-card img {
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .destination-card {
+            transition: transform .18s ease, box-shadow .18s ease;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 42px rgba(20, 83, 45, .16);
         }
 
         .brand-mark {
             width: 44px;
             height: 44px;
             border-radius: 8px;
-            background: #0d6efd;
+            background: #198754;
             color: #fff;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
+        }
+
+        .btn-primary {
+            background-color: #198754;
+            border-color: #198754;
+        }
+
+        .btn-primary:hover {
+            background-color: #146c43;
+            border-color: #146c43;
         }
     </style>
     @stack('styles')
@@ -66,7 +108,13 @@
                         <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">About</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('destinations*') ? 'active' : '' }}" href="{{ route('destinations') }}">Destinations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Contact</a>
                     </li>
                 </ul>
             </div>

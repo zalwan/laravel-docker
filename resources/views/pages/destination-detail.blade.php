@@ -7,7 +7,7 @@
         <div class="col-lg-9">
             <div class="card soft-card overflow-hidden">
                 <img src="{{ asset('assets/images/' . $destination->image) }}" alt="{{ $destination->name }}"
-                    class="card-img-top" style="height: 360px; object-fit: cover;" onerror="this.style.display='none'">
+                    class="card-img-top" style="height: 420px; object-fit: cover;" onerror="this.style.display='none'">
 
                 <div class="card-body p-4 p-md-5">
                     <div class="d-flex flex-column flex-md-row justify-content-between gap-3 mb-4">
@@ -19,7 +19,7 @@
                         </div>
                         <div class="align-self-start text-md-end">
                             <p class="text-muted small text-uppercase fw-semibold mb-1">Harga Tiket</p>
-                            <p class="fs-4 fw-bold text-primary mb-0">Rp {{ number_format((float) $destination->ticket_price, 0, ',', '.') }}</p>
+                            <p class="fs-4 fw-bold text-success mb-0">Rp {{ number_format((float) $destination->ticket_price, 0, ',', '.') }}</p>
                         </div>
                     </div>
 
@@ -29,16 +29,22 @@
                     </div>
 
                     <div class="row g-3 mb-4">
+                        <div class="col-md-4">
+                            <div class="border rounded p-3 h-100">
+                                <p class="text-muted small text-uppercase fw-semibold mb-1">Wilayah</p>
+                                <p class="fw-semibold mb-0">{{ $destination->region }}</p>
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="border rounded p-3 h-100">
                                 <p class="text-muted small text-uppercase fw-semibold mb-1">Nama Destinasi</p>
                                 <p class="fw-semibold mb-0">{{ $destination->name }}</p>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-2">
                             <div class="border rounded p-3 h-100">
-                                <p class="text-muted small text-uppercase fw-semibold mb-1">Nama File Gambar</p>
-                                <p class="fw-semibold mb-0">{{ $destination->image }}</p>
+                                <p class="text-muted small text-uppercase fw-semibold mb-1">ID</p>
+                                <p class="fw-semibold mb-0">{{ $destination->id }}</p>
                             </div>
                         </div>
                     </div>

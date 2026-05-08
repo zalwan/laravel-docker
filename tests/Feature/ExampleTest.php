@@ -18,7 +18,7 @@ class ExampleTest extends TestCase
         $response = $this->get('/');
 
         $response->assertOk();
-        $response->assertSee('Daftar Wisata Alam Indonesia');
+        $response->assertSee('Jelajahi wisata alam terbaik Indonesia.');
         $response->assertSee('NIM 241011750067');
         $response->assertSee('Digit akhir 7');
     }
@@ -60,6 +60,19 @@ class ExampleTest extends TestCase
         });
 
         $this->get('/destinations?page=2')->assertOk();
+    }
+
+    public function test_about_and_contact_pages_are_available(): void
+    {
+        $this->get('/about')
+            ->assertOk()
+            ->assertSee('Tentang Aplikasi')
+            ->assertSee('db_uts_241011750067');
+
+        $this->get('/contact')
+            ->assertOk()
+            ->assertSee('Contact')
+            ->assertSee('NIM 241011750067');
     }
 
     public function test_destination_detail_page_is_available(): void
