@@ -53,6 +53,8 @@ class ExampleTest extends TestCase
         $response->assertSee('Daftar Wisata Alam');
         $response->assertSee('Lihat Detail');
         $response->assertSee('assets/images/', false);
+        $response->assertSee('Showing');
+        $response->assertSee('of <span class="fw-semibold">10</span>', false);
         $response->assertViewHas('destinations', function ($destinations) {
             return $destinations->perPage() === 6
                 && $destinations->count() === 6

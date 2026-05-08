@@ -37,8 +37,8 @@
         @endforelse
     </div>
 
-    <div class="d-flex justify-content-center mt-4">
-        {{ $destinations->links('pagination::bootstrap-5') }}
+    <div class="mt-4">
+        {{ $destinations->links('vendor.pagination.centered-bootstrap-5') }}
     </div>
 </div>
 @endsection
