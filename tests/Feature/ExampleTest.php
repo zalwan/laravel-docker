@@ -29,6 +29,7 @@ class ExampleTest extends TestCase
         $pages = [
             '/about' => 'Tentang BAWANA',
             '/services' => 'Produk',
+            '/contents' => 'Dynamic Contents',
             '/contact' => 'PT Meta BAWANA Indonesia',
         ];
 
@@ -59,5 +60,21 @@ class ExampleTest extends TestCase
 
         $this->assertIsArray($content->fresh()->items);
         $this->assertSame(['AI Learning', 'Analytics'], $content->fresh()->items);
+    }
+
+    public function test_dynamic_contents_page_is_paginated(): void
+    {
+        $this->seed(CompanyContentSeeder::class);
+
+        $response = $this->get('/contents');
+
+        $response->assertStatus(200);
+        $response->assertViewHas('contents', function ($contents) {
+            return $contents->perPage() === 10
+                && $contents->count() === 10
+                && $contents->total() >= 10;
+        });
+
+        $this->get('/contents?page=2')->assertStatus(200);
     }
 }
