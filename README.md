@@ -160,7 +160,7 @@ http://localhost:8000/destinations
 Konfigurasi utama ada di `.env` dan contoh konfigurasi tersedia di `.env.example`.
 
 ```env
-APP_NAME="Katalog Wisata Alam"
+APP_NAME=UTS_241011750067
 APP_URL=http://localhost:8000
 
 DB_CONNECTION=mysql
