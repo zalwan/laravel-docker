@@ -115,6 +115,11 @@ resources/views/
 
 routes/
   web.php
+
+Dockerfile
+docker-compose.yml
+docker/
+  nginx/default.conf
 ```
 
 ## Route Aplikasi
@@ -129,10 +134,48 @@ routes/
 
 ## Cara Menjalankan Project
 
+Project ini sudah menyertakan konfigurasi Docker agar aplikasi bisa dijalankan dengan stack yang konsisten.
+
+## Konfigurasi Docker
+
+File Docker yang digunakan:
+
+| File | Fungsi |
+| --- | --- |
+| `Dockerfile` | Membuat image PHP-FPM untuk aplikasi Laravel |
+| `docker-compose.yml` | Menjalankan service app, Nginx, MySQL, dan Redis |
+| `docker/nginx/default.conf` | Konfigurasi Nginx untuk melayani folder `public` Laravel |
+
+Service Docker:
+
+| Service | Container | Image | Port Host | Keterangan |
+| --- | --- | --- | --- | --- |
+| `app` | `laravel_app` | build dari `Dockerfile` | `9000` internal | PHP-FPM Laravel |
+| `nginx` | `laravel_nginx` | `nginx:alpine` | `8000:80` | Web server aplikasi |
+| `db` | `laravel_db` | `mysql:8.0` | `3306:3306` | Database MySQL |
+| `redis` | `laravel_redis` | `redis:7-alpine` | `6379:6379` | Redis cache/queue |
+
+Environment database pada Docker Compose mengambil nilai dari `.env`:
+
+```env
+DB_DATABASE=db_uts_241011750067
+DB_USERNAME=laravel
+DB_PASSWORD=secret
+DB_ROOT_PASSWORD=root
+```
+
+Jika `DB_ROOT_PASSWORD` tidak ada di `.env`, Docker Compose memakai default `root`.
+
 Pastikan Docker service sudah berjalan, lalu jalankan:
 
 ```bash
 docker compose up -d
+```
+
+Jika container sudah pernah dibuat dari konfigurasi lama, rebuild image app:
+
+```bash
+docker compose up -d --build
 ```
 
 Buat database dan berikan akses untuk user Laravel:
