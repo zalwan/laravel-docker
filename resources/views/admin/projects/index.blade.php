@@ -8,7 +8,10 @@
             <h1 class="fw-bold mb-1">Kelola Projects</h1>
             <p class="text-muted mb-0">Atur daftar portfolio, status pengerjaan, teknologi, dan gambar project.</p>
         </div>
-        <a href="{{ route('admin.projects.create') }}" class="btn btn-admin-primary">Tambah Project</a>
+        <div class="d-flex gap-2">
+            <a href="{{ route('admin.projects.pdf') }}" target="_blank" rel="noopener" class="btn btn-outline-secondary">Cetak PDF</a>
+            <a href="{{ route('admin.projects.create') }}" class="btn btn-admin-primary">Tambah Project</a>
+        </div>
     </div>
 
     <div class="row g-3 mb-4">

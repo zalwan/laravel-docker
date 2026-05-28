@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 class ProjectController extends Controller
@@ -15,6 +17,15 @@ class ProjectController extends Controller
         $projects = Project::latest()->paginate(10);
 
         return view('admin.projects.index', compact('projects'));
+    }
+
+    public function pdf(): Response
+    {
+        $projects = Project::latest()->get();
+
+        return Pdf::loadView('admin.projects.pdf', compact('projects'))
+            ->setPaper('a4', 'portrait')
+            ->stream('data-projects.pdf');
     }
 
     public function create(): View

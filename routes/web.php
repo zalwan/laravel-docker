@@ -17,5 +17,6 @@ Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 Route::redirect('/admin', '/admin/projects')->name('admin');
 Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('projects/pdf', [AdminProjectController::class, 'pdf'])->name('projects.pdf');
     Route::resource('projects', AdminProjectController::class)->except(['show']);
 });
