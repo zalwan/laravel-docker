@@ -88,6 +88,10 @@
             background: rgba(255, 255, 255, .09);
         }
 
+        button.admin-nav-link {
+            background: transparent;
+        }
+
         .admin-main {
             min-width: 0;
             padding: 28px;
@@ -182,6 +186,13 @@
                     <span>Lihat Website</span>
                     <span class="small">Publik</span>
                 </a>
+                <form method="POST" action="{{ route('logout') }}" class="mt-3">
+                    @csrf
+                    <button type="submit" class="admin-nav-link border-0 w-100 text-start">
+                        <span>Logout</span>
+                        <span class="small">{{ auth()->user()->name }}</span>
+                    </button>
+                </form>
             </nav>
         </aside>
 

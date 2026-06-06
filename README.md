@@ -7,7 +7,7 @@ A complete Laravel 12 application setup with Docker containerization, MySQL data
 - **[LARAVEL_GUIDE.md](LARAVEL_GUIDE.md)** - Complete Laravel development guide with examples
 - **[LARAVEL_COMMANDS.md](LARAVEL_COMMANDS.md)** - Complete Laravel Artisan commands reference
 - **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** - Quick reference for common tasks
-- **[API.md](API.md)** - API endpoints documentation
+- **[API.md](API.md)** - API, admin login, Swagger auto-auth, and users CRUD documentation
 - **[CONFIGURATION.md](CONFIGURATION.md)** - Configuration guide
 - **[DEPLOYMENT.md](DEPLOYMENT.md)** - Deployment instructions
 
@@ -92,7 +92,18 @@ laravel/
 
 6. **Access the application**
    - Open your browser to: **http://localhost:8000**
+   - Admin login: **http://localhost:8000/login**
+   - Swagger UI: **http://localhost:8000/api/docs**
    - API Health Check: **http://localhost:8000/api/health**
+
+Default admin account:
+
+```text
+Email: admin@example.com
+Password: password123
+```
+
+See **[API.md](API.md)** for the full admin, Swagger, and REST API guide.
 
 ## Common Commands
 
@@ -177,6 +188,9 @@ The project uses Docker volumes for data persistence:
 
 - **dbdata**: MySQL database data
 - **redisdata**: Redis data
+- **vendor**: Composer dependencies used by the app container
+- **storage**: Laravel storage directory
+- **bootstrap_cache**: Laravel bootstrap cache directory
 
 ## Network
 

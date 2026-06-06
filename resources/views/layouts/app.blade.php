@@ -29,12 +29,21 @@
                         <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Contact</a>
                     </li>
                     <li class="nav-item ms-lg-2">
-                        <a
-                            class="btn btn-sm {{ request()->routeIs('admin.*') ? 'btn-primary' : 'btn-outline-primary' }}"
-                            href="{{ route('admin.projects.index') }}"
-                        >
-                            Admin Panel
-                        </a>
+                        @auth
+                            <a
+                                class="btn btn-sm {{ request()->routeIs('admin.*') ? 'btn-primary' : 'btn-outline-primary' }}"
+                                href="{{ route('admin.projects.index') }}"
+                            >
+                                Admin Panel
+                            </a>
+                        @else
+                            <a
+                                class="btn btn-sm {{ request()->routeIs('login') ? 'btn-primary' : 'btn-outline-primary' }}"
+                                href="{{ route('login') }}"
+                            >
+                                Login
+                            </a>
+                        @endauth
                     </li>
                 </ul>
             </div>
