@@ -29,6 +29,7 @@ class ExampleTest extends TestCase
         $pages = [
             '/about' => 'Tentang BAWANA',
             '/services' => 'Produk',
+            '/articles' => 'Artikel',
             '/contents' => 'Dynamic Contents',
             '/contact' => 'PT Meta BAWANA Indonesia',
         ];
@@ -93,5 +94,33 @@ class ExampleTest extends TestCase
         $response->assertSee($content->title);
         $response->assertSee($content->description);
         $response->assertSee($content->image);
+    }
+
+    public function test_public_articles_page_lists_published_articles(): void
+    {
+        \App\Models\Article::create([
+            'title' => 'Published Insight',
+            'slug' => 'published-insight',
+            'excerpt' => 'Published article excerpt',
+            'body' => 'Published article body',
+            'status' => 'published',
+            'published_at' => now(),
+        ]);
+        \App\Models\Article::create([
+            'title' => 'Draft Insight',
+            'slug' => 'draft-insight',
+            'body' => 'Draft article body',
+            'status' => 'draft',
+        ]);
+
+        $response = $this->get('/articles');
+
+        $response->assertStatus(200);
+        $response->assertSee('Published Insight');
+        $response->assertDontSee('Draft Insight');
+
+        $this->get('/articles/published-insight')
+            ->assertStatus(200)
+            ->assertSee('Published article body');
     }
 }
