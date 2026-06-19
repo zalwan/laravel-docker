@@ -26,7 +26,7 @@
             </div>
         @empty
             <div class="col-12 text-center text-muted py-5">
-                <p class="mb-0">Belum ada artikel yang dipublikasikan.</p>
+                <p class="mb-0">Belum ada article yang dipublikasikan.</p>
             </div>
         @endforelse
     </div>

@@ -3,8 +3,9 @@
 namespace Tests\Feature;
 
 use App\Models\CompanyContent;
-use App\Models\Product;
 use App\Models\Article;
+use App\Models\GalleryItem;
+use App\Models\Product;
 use Database\Seeders\CompanyContentSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -32,7 +33,8 @@ class ExampleTest extends TestCase
             '/profile' => 'Profile BAWANA',
             '/products' => 'Product',
             '/articles' => 'Article',
-            '/contents' => 'Dynamic Contents',
+            '/gallery' => 'Gallery',
+            '/contents' => 'Dynamic Content',
             '/contact' => 'PT Meta BAWANA Indonesia',
         ];
 
@@ -160,5 +162,28 @@ class ExampleTest extends TestCase
         $this->get('/products/active-product')
             ->assertStatus(200)
             ->assertSee('Active product description');
+    }
+
+    public function test_public_gallery_page_uses_published_gallery_items(): void
+    {
+        GalleryItem::create([
+            'title' => 'Published Gallery',
+            'description' => 'Published gallery description',
+            'image_path' => 'gallery/published.jpg',
+            'is_published' => true,
+        ]);
+        GalleryItem::create([
+            'title' => 'Draft Gallery',
+            'description' => 'Draft gallery description',
+            'image_path' => 'gallery/draft.jpg',
+            'is_published' => false,
+        ]);
+
+        $response = $this->get('/gallery');
+
+        $response->assertStatus(200);
+        $response->assertSee('Published Gallery');
+        $response->assertSee('storage/gallery/published.jpg');
+        $response->assertDontSee('Draft Gallery');
     }
 }

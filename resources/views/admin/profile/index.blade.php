@@ -5,9 +5,9 @@
 <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-4">
     <div>
         <p class="text-muted text-uppercase small fw-bold mb-1">Admin</p>
-        <h1 class="fw-bold mb-0">Company Profile Content</h1>
+        <h1 class="fw-bold mb-0">Company Profile Data</h1>
     </div>
-    <a href="{{ route('admin.profile.create') }}" class="btn btn-primary align-self-lg-start">Tambah Content</a>
+    <a href="{{ route('admin.profile.create') }}" class="btn btn-primary align-self-lg-start">Tambah Data</a>
 </div>
 
 <div class="card admin-card">
@@ -16,7 +16,7 @@
             <table class="table align-middle mb-0">
                 <thead>
                     <tr>
-                        <th class="ps-4">Content</th>
+                        <th class="ps-4">Data</th>
                         <th>Section</th>
                         <th>Value</th>
                         <th class="text-end">Sort</th>
@@ -27,7 +27,7 @@
                     @forelse ($contents as $content)
                         <tr>
                             <td class="ps-4">
-                                <div class="fw-semibold">{{ $content->title ?? $content->label ?? 'Untitled Content' }}</div>
+                                <div class="fw-semibold">{{ $content->title ?? $content->label ?? 'Data belum diberi judul' }}</div>
                                 @if ($content->description)
                                     <div class="small text-muted">{{ str($content->description)->limit(90) }}</div>
                                 @endif
@@ -38,7 +38,7 @@
                             <td class="text-end pe-4">
                                 <div class="d-inline-flex gap-2">
                                     <a href="{{ route('admin.profile.edit', $content) }}" class="btn btn-sm btn-outline-primary">Edit</a>
-                                    <form method="POST" action="{{ route('admin.profile.destroy', $content) }}" onsubmit="return confirm('Hapus content ini?')">
+                                    <form method="POST" action="{{ route('admin.profile.destroy', $content) }}" onsubmit="return confirm('Hapus data ini?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-outline-danger">Hapus</button>
@@ -48,7 +48,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center text-muted py-5">Belum ada content.</td>
+                            <td colspan="5" class="text-center text-muted py-5">Belum ada data.</td>
                         </tr>
                     @endforelse
                 </tbody>

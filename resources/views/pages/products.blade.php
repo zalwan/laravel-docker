@@ -6,7 +6,7 @@
     <div class="section-title text-center mx-auto mb-5">
         <h1 class="fw-bold display-5 mb-3">Product</h1>
         <p class="lead text-muted">
-            Solusi pembelajaran digital BAWANA yang dikelola dari Product CRUD di admin panel.
+            Rangkaian product pembelajaran digital BAWANA untuk platform, konten, simulasi, dan pendampingan implementasi.
         </p>
     </div>
 
@@ -35,7 +35,7 @@
             </div>
         @empty
             <div class="col-12 text-center text-muted py-5">
-                <p class="mb-0">Belum ada product aktif.</p>
+                <p class="mb-0">Belum ada product yang aktif.</p>
             </div>
         @endforelse
     </div>

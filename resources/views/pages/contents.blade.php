@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title', 'Dynamic Contents - BAWANA')
+@section('title', 'Dynamic Content - BAWANA')
 
 @section('content')
 <div class="container my-5">
     <div class="section-title text-center mx-auto mb-5">
-        <h1 class="fw-bold display-5 mb-3">Dynamic Contents</h1>
+        <h1 class="fw-bold display-5 mb-3">Dynamic Content</h1>
         <p class="lead text-muted">
-            Seluruh konten company profile BAWANA di halaman ini berasal dari tabel company_contents dan ditampilkan 10 item per halaman.
+            Data profile, highlight, kontak, dan pendukung halaman BAWANA yang dikelola secara dinamis.
         </p>
     </div>
 
@@ -26,7 +26,7 @@
                             <span class="text-muted small">#{{ $content->sort_order }}</span>
                         </div>
 
-                        <h5 class="fw-bold mb-2">{{ $content->title ?? $content->label ?? 'Untitled Content' }}</h5>
+                        <h5 class="fw-bold mb-2">{{ $content->title ?? $content->label ?? 'Data belum diberi judul' }}</h5>
 
                         @if ($content->value)
                             <p class="fw-semibold mb-2">{{ $content->value }}</p>
@@ -52,7 +52,7 @@
             </div>
         @empty
             <div class="col-12 text-center text-muted py-5">
-                <p class="mb-0">No dynamic content available.</p>
+                <p class="mb-0">Belum ada dynamic content yang tersedia.</p>
             </div>
         @endforelse
     </div>

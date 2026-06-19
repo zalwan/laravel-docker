@@ -10,6 +10,7 @@ use App\Http\Controllers\ArticlePublicController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\GalleryPublicController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductPublicController;
@@ -23,6 +24,7 @@ Route::get('/products', [ProductPublicController::class, 'index'])->name('produc
 Route::get('/products/{product:slug}', [ProductPublicController::class, 'show'])->name('products.show');
 Route::get('/articles', [ArticlePublicController::class, 'index'])->name('articles.index');
 Route::get('/articles/{article:slug}', [ArticlePublicController::class, 'show'])->name('articles.show');
+Route::get('/gallery', [GalleryPublicController::class, 'index'])->name('gallery.index');
 Route::get('/contents', [ContentController::class, 'index'])->name('contents');
 Route::get('/contents/{content}', [ContentController::class, 'show'])->name('contents.show');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');

@@ -42,12 +42,12 @@ class CompanyContentSeeder extends Seeder
             ],
             [
                 'section' => 'highlight',
-                'title' => 'Ribuan konten digital untuk employee development',
+                'title' => 'Ribuan konten digital untuk pengembangan karyawan',
                 'sort_order' => 2,
             ],
             [
                 'section' => 'highlight',
-                'title' => 'Customer success support untuk adopsi pembelajaran',
+                'title' => 'Customer success untuk adopsi pembelajaran',
                 'sort_order' => 3,
             ],
             [
@@ -83,13 +83,13 @@ class CompanyContentSeeder extends Seeder
             [
                 'section' => 'identity',
                 'label' => 'Industri',
-                'value' => 'Digital Learning / Corporate Learning',
+                'value' => 'Digital Learning dan Corporate Learning',
                 'sort_order' => 3,
             ],
             [
                 'section' => 'identity',
                 'label' => 'Fokus Bisnis',
-                'value' => 'Learning Experience Platform & Employee Development',
+                'value' => 'Learning Experience Platform dan Employee Development',
                 'sort_order' => 4,
             ],
             [
@@ -182,14 +182,14 @@ class CompanyContentSeeder extends Seeder
             [
                 'section' => 'service',
                 'title' => 'PUSTAKA BAWANA',
-                'description' => 'Perpustakaan digital pembelajaran dengan video learning, interactive learning, audio learning, quiz, podcast, reading materials, dan gamification.',
+                'description' => 'Perpustakaan digital pembelajaran dengan video learning, interactive learning, audio learning, quiz, podcast, reading material, dan gamification.',
                 'items' => ['Leadership', 'Business Skill', 'Financial', 'Sales & Marketing', 'Technology', 'Service Quality'],
                 'sort_order' => 1,
             ],
             [
                 'section' => 'service',
                 'title' => 'Learning Experience Platform',
-                'description' => 'Platform pembelajaran digital berbasis AI untuk mengelola journey, rekomendasi belajar, IDP, analytics, webinar, dan white label learning platform.',
+                'description' => 'Platform pembelajaran digital berbasis AI untuk mengelola journey, rekomendasi belajar, IDP, analytics, webinar, dan white label learning portal.',
                 'items' => ['AI Recommendation', 'Learning Journey', 'Gamification', 'Learning Analytics', 'AI Learning Assistant', 'White Label Platform'],
                 'sort_order' => 2,
             ],
@@ -209,7 +209,7 @@ class CompanyContentSeeder extends Seeder
             ],
             [
                 'section' => 'advantage',
-                'title' => '3-in-1 digital learning solution: platform, content, dan customer success.',
+                'title' => 'Solusi digital learning 3-in-1: platform, konten, dan customer success.',
                 'sort_order' => 1,
             ],
             [

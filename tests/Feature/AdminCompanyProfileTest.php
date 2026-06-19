@@ -23,7 +23,7 @@ class AdminCompanyProfileTest extends TestCase
         $response = $this->actingAs($user)->get('/admin/profile');
 
         $response->assertStatus(200);
-        $response->assertSee('Company Profile Content');
+        $response->assertSee('Company Profile Data');
         $response->assertSee('BAWANA');
     }
 

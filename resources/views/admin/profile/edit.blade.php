@@ -5,7 +5,7 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
         <p class="text-muted text-uppercase small fw-bold mb-1">Company Profile</p>
-        <h1 class="fw-bold mb-0">Edit Content</h1>
+        <h1 class="fw-bold mb-0">Edit Data</h1>
     </div>
 </div>
 

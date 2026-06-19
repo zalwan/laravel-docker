@@ -12,7 +12,7 @@
                 @if ($product->image)
                     <img src="{{ asset('images/projects/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid w-100" style="height: 420px; object-fit: cover;" onerror="this.style.display='none'">
                 @else
-                    <div class="bg-light d-flex align-items-center justify-content-center text-muted" style="height: 320px;">No image</div>
+                    <div class="bg-light d-flex align-items-center justify-content-center text-muted" style="height: 320px;">Image belum tersedia</div>
                 @endif
             </div>
         </div>
@@ -21,7 +21,7 @@
             <div class="card soft-card">
                 <div class="card-body p-4 p-md-5">
                     @if ($product->is_featured)
-                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary-subtle px-3 py-2 mb-3">Featured Product</span>
+                        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary-subtle px-3 py-2 mb-3">Product Unggulan</span>
                     @endif
                     <h1 class="fw-bold display-6 mb-3">{{ $product->name }}</h1>
                     @if ($product->price)
