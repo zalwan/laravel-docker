@@ -25,6 +25,7 @@ Route::get('/products/{product:slug}', [ProductPublicController::class, 'show'])
 Route::get('/articles', [ArticlePublicController::class, 'index'])->name('articles.index');
 Route::get('/articles/{article:slug}', [ArticlePublicController::class, 'show'])->name('articles.show');
 Route::get('/gallery', [GalleryPublicController::class, 'index'])->name('gallery.index');
+Route::get('/gallery-items/{galleryItem}/image', [GalleryPublicController::class, 'image'])->name('gallery.image');
 Route::get('/contents', [ContentController::class, 'index'])->name('contents');
 Route::get('/contents/{content}', [ContentController::class, 'show'])->name('contents.show');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');

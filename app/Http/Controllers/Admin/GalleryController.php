@@ -7,6 +7,7 @@ use App\Models\GalleryItem;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class GalleryController extends Controller
@@ -31,7 +32,7 @@ class GalleryController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $data = $this->validatedData($request);
-        $data['image_path'] = $request->file('image')->store('gallery', 'public');
+        $this->setUploadedImageData($request, $data);
 
         GalleryItem::create($data);
 
@@ -52,8 +53,8 @@ class GalleryController extends Controller
         $data = $this->validatedData($request, false);
 
         if ($request->hasFile('image')) {
-            Storage::disk('public')->delete($gallery->image_path);
-            $data['image_path'] = $request->file('image')->store('gallery', 'public');
+            $this->deleteStorageImageIfNeeded($gallery);
+            $this->setUploadedImageData($request, $data);
         }
 
         $gallery->update($data);
@@ -65,7 +66,7 @@ class GalleryController extends Controller
 
     public function destroy(GalleryItem $gallery): RedirectResponse
     {
-        Storage::disk('public')->delete($gallery->image_path);
+        $this->deleteStorageImageIfNeeded($gallery);
         $gallery->delete();
 
         return redirect()
@@ -91,5 +92,30 @@ class GalleryController extends Controller
         unset($data['image']);
 
         return $data;
+    }
+
+    /**
+     * @param array<string, mixed> $data
+     */
+    private function setUploadedImageData(Request $request, array &$data): void
+    {
+        $image = $request->file('image');
+
+        if (! $image) {
+            return;
+        }
+
+        $data['image_path'] = 'database/gallery/' . Str::uuid() . '.' . $image->extension();
+        $data['image_data'] = base64_encode((string) file_get_contents($image->getRealPath()));
+        $data['image_mime'] = $image->getMimeType() ?: $image->getClientMimeType() ?: 'application/octet-stream';
+    }
+
+    private function deleteStorageImageIfNeeded(GalleryItem $gallery): void
+    {
+        if ($gallery->image_data || str_starts_with($gallery->image_path, 'images/')) {
+            return;
+        }
+
+        Storage::disk('public')->delete($gallery->image_path);
     }
 }

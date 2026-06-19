@@ -67,8 +67,9 @@ The Vercel setup uses:
 - `database/vercel.sqlite` as a seeded SQLite template.
 - `/tmp/database.sqlite` as runtime database storage.
 - `SESSION_DRIVER=cookie`, `CACHE_STORE=array`, and `QUEUE_CONNECTION=sync`.
+- Uploaded gallery images are stored in the `gallery_items` table for this demo, then served through `/gallery-items/{galleryItem}/image`.
 
-Important limitation: `/tmp` is ephemeral. Data changed through admin CRUD may reset after cold starts or new deployments. File upload is not durable on Vercel in this demo mode.
+Important limitation: `/tmp` is ephemeral. Data changed through admin CRUD, including uploaded gallery images stored in SQLite, may reset after cold starts or new deployments.
 
 ### Required Files
 
@@ -188,13 +189,15 @@ DB_DATABASE=/tmp/database.sqlite
 
 ## Storage
 
-Local Docker uses Laravel's `public` disk for gallery uploads.
+Local Docker can serve Laravel's `public` disk for legacy gallery paths.
 
 ```bash
 docker compose exec app php artisan storage:link
 ```
 
-Vercel serverless filesystem is not persistent. For production gallery uploads, use external object storage such as S3-compatible storage and configure `FILESYSTEM_DISK` accordingly.
+New gallery uploads are stored in the database so they render consistently in Docker and the Vercel demo. This is acceptable for small demo uploads, but it is not ideal for production image storage.
+
+Vercel serverless filesystem is not persistent. For production gallery uploads, prefer external object storage such as S3-compatible storage and configure `FILESYSTEM_DISK` accordingly.
 
 The seeded Vercel gallery uses committed public assets under:
 
