@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContentController;
@@ -20,5 +21,5 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.store');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function (): void {
-    Route::view('/', 'admin.dashboard')->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 });
