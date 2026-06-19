@@ -7,6 +7,74 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Docker Setup
+
+Project ini bisa dijalankan penuh lewat Docker dengan stack `nginx`, `php-fpm`, `mysql`, dan optional `node` untuk Vite.
+
+### Prasyarat
+
+- Docker Desktop / Docker Engine
+- Docker Compose v2
+
+### Menjalankan aplikasi
+
+```bash
+docker compose up -d --build
+```
+
+Saat container `app` pertama kali berjalan, entrypoint akan:
+
+- menjalankan `composer install` jika `vendor` belum ada,
+- membuat `.env` dari `.env.example` jika belum ada,
+- membuat `APP_KEY` jika masih kosong,
+- menjalankan migration ke database MySQL Docker.
+
+Aplikasi tersedia di:
+
+```text
+http://localhost:8080
+```
+
+Database MySQL tersedia dari host di `localhost:3306` dengan kredensial:
+
+```text
+database: laravel
+username: laravel
+password: secret
+root password: root
+```
+
+### Menjalankan Vite dev server
+
+Jika sedang mengembangkan asset Vite, jalankan profile `frontend`:
+
+```bash
+docker compose --profile frontend up -d node
+```
+
+Vite tersedia di:
+
+```text
+http://localhost:5173
+```
+
+### Perintah harian
+
+```bash
+docker compose exec app php artisan test
+docker compose exec app php artisan migrate
+docker compose exec app php artisan db:seed
+docker compose exec app composer install
+docker compose run --rm node sh -c "if [ -f package-lock.json ]; then npm ci; else npm install --no-package-lock; fi && npm run build"
+```
+
+### Reset environment Docker
+
+```bash
+docker compose down -v
+docker compose up -d --build
+```
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
