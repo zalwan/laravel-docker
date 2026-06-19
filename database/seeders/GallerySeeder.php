@@ -4,9 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\GalleryItem;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
-
 class GallerySeeder extends Seeder
 {
     public function run(): void
@@ -15,8 +12,7 @@ class GallerySeeder extends Seeder
             [
                 'title' => 'Digital Learning Platform Preview',
                 'description' => 'Ilustrasi tampilan pembelajaran digital BAWANA.',
-                'source' => public_path('images/projects/elearning.png'),
-                'image_path' => 'gallery/elearning.png',
+                'image_path' => 'images/projects/elearning.png',
                 'alt_text' => 'Digital learning platform preview',
                 'sort_order' => 1,
                 'is_published' => true,
@@ -24,8 +20,7 @@ class GallerySeeder extends Seeder
             [
                 'title' => 'Enterprise Learning Dashboard',
                 'description' => 'Contoh dashboard operasional untuk pengelolaan pembelajaran perusahaan.',
-                'source' => public_path('images/projects/erp.png'),
-                'image_path' => 'gallery/erp.png',
+                'image_path' => 'images/projects/erp.png',
                 'alt_text' => 'Enterprise learning dashboard',
                 'sort_order' => 2,
                 'is_published' => true,
@@ -33,8 +28,7 @@ class GallerySeeder extends Seeder
             [
                 'title' => 'Employee Development Workspace',
                 'description' => 'Contoh workspace pengembangan karyawan dan HR learning management.',
-                'source' => public_path('images/projects/hrms.png'),
-                'image_path' => 'gallery/hrms.png',
+                'image_path' => 'images/projects/hrms.png',
                 'alt_text' => 'Employee development workspace',
                 'sort_order' => 3,
                 'is_published' => true,
@@ -42,10 +36,6 @@ class GallerySeeder extends Seeder
         ];
 
         foreach ($items as $item) {
-            if (File::exists($item['source']) && ! Storage::disk('public')->exists($item['image_path'])) {
-                Storage::disk('public')->put($item['image_path'], File::get($item['source']));
-            }
-
             GalleryItem::updateOrCreate(
                 ['image_path' => $item['image_path']],
                 [
