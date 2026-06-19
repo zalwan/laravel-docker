@@ -35,7 +35,7 @@ class ExampleTest extends TestCase
             '/articles' => 'Article',
             '/gallery' => 'Gallery',
             '/contents' => 'Dynamic Content',
-            '/contact' => 'PT Meta BAWANA Indonesia',
+            '/contact' => 'RIZAL SURYAWAN',
         ];
 
         foreach ($pages as $uri => $content) {

@@ -7,8 +7,8 @@
         <div class="col-lg-8">
             <div class="card soft-card">
                 <div class="card-body p-5">
-                    <h1 class="fw-bold mb-4">Kontak</h1>
-                    <p class="lead text-muted">Hubungi BAWANA untuk diskusi kebutuhan digital learning dan employee development perusahaan.</p>
+                    <h1 class="fw-bold mb-4">Contact</h1>
+                    <p class="lead text-muted">Hubungi langsung untuk diskusi kebutuhan engineering, digital product, dan implementasi platform.</p>
 
                     <div class="list-group list-group-flush my-4">
                         @foreach ($contacts as $contact)
@@ -17,7 +17,7 @@
                                 @if ($contact->description)
                                     <a href="{{ $contact->description }}" class="fw-medium text-decoration-none">{{ $contact->value }}</a>
                                 @else
-                                    <p class="mb-0 fw-medium @if ($contact->label === 'Perusahaan') fs-5 @endif">{{ $contact->value }}</p>
+                                    <p class="mb-0 fw-medium @if ($contact->label === 'Nama') fs-5 @endif">{{ $contact->value }}</p>
                                 @endif
                             </div>
                         @endforeach
