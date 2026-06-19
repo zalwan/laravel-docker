@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CompanyProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContentController;
@@ -30,4 +31,5 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
     Route::resource('articles', ArticleController::class)->except(['show']);
     Route::resource('products', ProductController::class)->except(['show']);
     Route::resource('gallery', GalleryController::class)->except(['show']);
+    Route::get('reports/project-summary.pdf', [ReportController::class, 'export'])->name('reports.export');
 });

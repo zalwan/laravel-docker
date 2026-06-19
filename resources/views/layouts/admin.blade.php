@@ -69,6 +69,7 @@
                 <a href="{{ route('admin.articles.index') }}" class="nav-link {{ request()->routeIs('admin.articles.*') ? 'active' : '' }}">Articles</a>
                 <a href="{{ route('admin.products.index') }}" class="nav-link {{ request()->routeIs('admin.products.*') ? 'active' : '' }}">Products</a>
                 <a href="{{ route('admin.gallery.index') }}" class="nav-link {{ request()->routeIs('admin.gallery.*') ? 'active' : '' }}">Gallery</a>
+                <a href="{{ route('admin.reports.export') }}" class="nav-link">PDF Report</a>
                 <a href="{{ route('home') }}" class="nav-link">Lihat Website</a>
             </nav>
         </aside>
