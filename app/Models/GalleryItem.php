@@ -21,4 +21,13 @@ class GalleryItem extends Model
             'is_published' => 'boolean',
         ];
     }
+
+    public function imageUrl(): string
+    {
+        if (str_starts_with($this->image_path, 'images/')) {
+            return asset($this->image_path);
+        }
+
+        return asset('storage/' . $this->image_path);
+    }
 }

@@ -27,7 +27,7 @@
                     @forelse ($galleryItems as $galleryItem)
                         <tr>
                             <td class="ps-4" style="width: 110px;">
-                                <img src="{{ asset('storage/' . $galleryItem->image_path) }}" alt="{{ $galleryItem->alt_text ?? $galleryItem->title }}" class="rounded object-fit-cover" width="72" height="54">
+                                <img src="{{ $galleryItem->imageUrl() }}" alt="{{ $galleryItem->alt_text ?? $galleryItem->title }}" class="rounded object-fit-cover" width="72" height="54">
                             </td>
                             <td>
                                 <div class="fw-semibold">{{ $galleryItem->title }}</div>

@@ -12,14 +12,9 @@
 
     <div class="row g-4">
         @forelse ($galleryItems as $galleryItem)
-            @php
-                $imageUrl = str_starts_with($galleryItem->image_path, 'images/')
-                    ? asset($galleryItem->image_path)
-                    : asset('storage/' . $galleryItem->image_path);
-            @endphp
             <div class="col-md-6 col-lg-4">
                 <div class="card soft-card h-100 overflow-hidden">
-                    <img src="{{ $imageUrl }}"
+                    <img src="{{ $galleryItem->imageUrl() }}"
                         alt="{{ $galleryItem->alt_text ?? $galleryItem->title }}"
                         class="card-img-top"
                         style="height: 240px; object-fit: cover;"

@@ -95,5 +95,21 @@ class AdminGalleryTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSee('Visible Gallery');
+        $response->assertSee('storage/gallery/visible.jpg');
+    }
+
+    public function test_admin_gallery_index_supports_seeded_public_assets(): void
+    {
+        $user = User::factory()->create();
+        GalleryItem::create([
+            'title' => 'Seeded Gallery',
+            'image_path' => 'images/projects/elearning.png',
+        ]);
+
+        $response = $this->actingAs($user)->get('/admin/gallery');
+
+        $response->assertStatus(200);
+        $response->assertSee('Seeded Gallery');
+        $response->assertSee('images/projects/elearning.png');
     }
 }
