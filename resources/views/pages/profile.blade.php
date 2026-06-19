@@ -1,13 +1,14 @@
 @extends('layouts.app')
-@section('title', 'About BAWANA')
+@section('title', ($intro->title ?? 'Profile BAWANA') . ' - BAWANA')
+@section('meta_description', $intro->description ?? 'Profile BAWANA')
 
 @section('content')
 <div class="container my-5">
     <div class="section-title text-center mx-auto mb-5">
-        <h1 class="fw-bold display-5 mb-3">Tentang BAWANA</h1>
-        <p class="lead text-muted">
-            BAWANA adalah platform digital learning dan employee development dari PT Meta BAWANA Indonesia, bagian dari Netpolitan Group yang bergerak di industri digital learning sejak 2003.
-        </p>
+        <h1 class="fw-bold display-5 mb-3">{{ $intro->title ?? 'Profile BAWANA' }}</h1>
+        @if ($intro?->description)
+            <p class="lead text-muted">{{ $intro->description }}</p>
+        @endif
     </div>
 
     <div class="row g-4 mb-4">
@@ -29,11 +30,15 @@
         <div class="col-lg-5">
             <div class="card soft-card h-100">
                 <div class="card-body p-5">
-                    <h2 class="fw-bold mb-3">Visi</h2>
-                    <p class="text-muted mb-4">Menjadi solusi digital learning terdepan dalam mendukung pengembangan talenta dan transformasi pembelajaran perusahaan di Indonesia.</p>
+                    @if ($vision)
+                        <h2 class="fw-bold mb-3">{{ $vision->title }}</h2>
+                        <p class="text-muted mb-4">{{ $vision->description }}</p>
+                    @endif
 
-                    <h2 class="fw-bold mb-3">Target Market</h2>
-                    <p class="text-muted mb-0">Perusahaan besar, BUMN, institusi keuangan, organisasi pemerintah, dan divisi HR atau Learning Development.</p>
+                    @if ($targetMarket)
+                        <h2 class="fw-bold mb-3">{{ $targetMarket->title }}</h2>
+                        <p class="text-muted mb-0">{{ $targetMarket->description }}</p>
+                    @endif
                 </div>
             </div>
         </div>

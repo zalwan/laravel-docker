@@ -29,7 +29,7 @@ class ExampleTest extends TestCase
         $this->seed(CompanyContentSeeder::class);
 
         $pages = [
-            '/about' => 'Tentang BAWANA',
+            '/profile' => 'Profile BAWANA',
             '/products' => 'Product',
             '/articles' => 'Article',
             '/contents' => 'Dynamic Contents',
@@ -42,6 +42,11 @@ class ExampleTest extends TestCase
             $response->assertStatus(200);
             $response->assertSee($content);
         }
+    }
+
+    public function test_legacy_about_route_redirects_to_profile(): void
+    {
+        $this->get('/about')->assertRedirect('/profile');
     }
 
     public function test_company_content_seeder_creates_dynamic_content(): void

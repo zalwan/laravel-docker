@@ -51,6 +51,24 @@ class CompanyContentSeeder extends Seeder
                 'sort_order' => 3,
             ],
             [
+                'section' => 'profile_intro',
+                'title' => 'Profile BAWANA',
+                'description' => 'BAWANA adalah platform digital learning dan employee development dari PT Meta BAWANA Indonesia, bagian dari Netpolitan Group yang bergerak di industri digital learning sejak 2003.',
+                'sort_order' => 1,
+            ],
+            [
+                'section' => 'profile_vision',
+                'title' => 'Visi',
+                'description' => 'Menjadi solusi digital learning terdepan dalam mendukung pengembangan talenta dan transformasi pembelajaran perusahaan di Indonesia.',
+                'sort_order' => 1,
+            ],
+            [
+                'section' => 'profile_target_market',
+                'title' => 'Target Market',
+                'description' => 'Perusahaan besar, BUMN, institusi keuangan, organisasi pemerintah, dan divisi HR atau Learning Development.',
+                'sort_order' => 1,
+            ],
+            [
                 'section' => 'identity',
                 'label' => 'Nama Perusahaan',
                 'value' => 'PT Meta BAWANA Indonesia',

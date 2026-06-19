@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CompanyProfileController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -12,11 +11,13 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductPublicController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::redirect('/about', '/profile')->name('about');
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::redirect('/services', '/products')->name('services');
 Route::get('/products', [ProductPublicController::class, 'index'])->name('products.index');
 Route::get('/products/{product:slug}', [ProductPublicController::class, 'show'])->name('products.show');

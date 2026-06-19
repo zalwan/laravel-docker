@@ -18,7 +18,7 @@
                 </div>
                 <div class="d-flex gap-3">
                     <a href="{{ route('products.index') }}" class="btn btn-primary btn-lg px-4">Explore Product</a>
-                    <a href="{{ route('about') }}" class="btn btn-outline-secondary btn-lg px-4">Company Profile</a>
+                    <a href="{{ route('profile') }}" class="btn btn-outline-secondary btn-lg px-4">Company Profile</a>
                 </div>
             </div>
             <div class="col-lg-6">
