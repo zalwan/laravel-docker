@@ -20,7 +20,10 @@ class AdminDashboardTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSee('Dashboard');
-        $response->assertSee('Total Content');
+        $response->assertSee('Profile Content');
+        $response->assertSee('Articles');
+        $response->assertSee('Products');
+        $response->assertSee('Gallery');
         $response->assertSee('Content by Section');
         $response->assertSee('Latest Content');
     }

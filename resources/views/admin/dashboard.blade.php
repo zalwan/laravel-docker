@@ -11,27 +11,35 @@
 </div>
 
 <div class="row g-3 mb-4">
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="card admin-card h-100">
             <div class="card-body">
-                <div class="text-muted small text-uppercase fw-semibold mb-2">Total Content</div>
+                <div class="text-muted small text-uppercase fw-semibold mb-2">Profile Content</div>
                 <div class="display-6 fw-bold">{{ $totalContents }}</div>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="card admin-card h-100">
             <div class="card-body">
-                <div class="text-muted small text-uppercase fw-semibold mb-2">Sections</div>
-                <div class="display-6 fw-bold">{{ $sectionCounts->count() }}</div>
+                <div class="text-muted small text-uppercase fw-semibold mb-2">Articles</div>
+                <div class="display-6 fw-bold">{{ $totalArticles }}</div>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="card admin-card h-100">
             <div class="card-body">
-                <div class="text-muted small text-uppercase fw-semibold mb-2">Latest Updates</div>
-                <div class="display-6 fw-bold">{{ $latestContents->count() }}</div>
+                <div class="text-muted small text-uppercase fw-semibold mb-2">Products</div>
+                <div class="display-6 fw-bold">{{ $totalProducts }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card admin-card h-100">
+            <div class="card-body">
+                <div class="text-muted small text-uppercase fw-semibold mb-2">Gallery</div>
+                <div class="display-6 fw-bold">{{ $totalGalleryItems }}</div>
             </div>
         </div>
     </div>

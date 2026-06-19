@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Admin\Concerns\BuildsSlugs;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class ProductController extends Controller
 {
+    use BuildsSlugs;
+
     public function index(): View
     {
         $products = Product::query()
@@ -81,7 +83,7 @@ class ProductController extends Controller
             'is_featured' => ['nullable', 'boolean'],
         ]);
 
-        $data['slug'] = $data['slug'] ?: Str::slug($data['name']);
+        $data['slug'] = $this->buildSlug($data['slug'], $data['name']);
         $data['is_featured'] = $request->boolean('is_featured');
 
         return $data;

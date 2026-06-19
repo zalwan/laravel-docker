@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Article;
 use App\Models\CompanyContent;
+use App\Models\GalleryItem;
+use App\Models\Product;
 use Illuminate\View\View;
 
 class DashboardController extends Controller
@@ -23,6 +26,9 @@ class DashboardController extends Controller
 
         return view('admin.dashboard', [
             'totalContents' => CompanyContent::count(),
+            'totalArticles' => Article::count(),
+            'totalProducts' => Product::count(),
+            'totalGalleryItems' => GalleryItem::count(),
             'sectionCounts' => $sectionCounts,
             'latestContents' => $latestContents,
         ]);

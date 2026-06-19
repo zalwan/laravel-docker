@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Admin\Concerns\BuildsSlugs;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class ArticleController extends Controller
 {
+    use BuildsSlugs;
+
     public function index(): View
     {
         $articles = Article::query()
@@ -79,7 +81,7 @@ class ArticleController extends Controller
             'published_at' => ['nullable', 'date'],
         ]);
 
-        $data['slug'] = $data['slug'] ?: Str::slug($data['title']);
+        $data['slug'] = $this->buildSlug($data['slug'], $data['title']);
 
         return $data;
     }
