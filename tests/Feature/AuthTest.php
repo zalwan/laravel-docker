@@ -21,12 +21,12 @@ class AuthTest extends TestCase
     {
         $user = User::factory()->create([
             'email' => 'admin@example.com',
-            'password' => 'password',
+            'password' => 'admin',
         ]);
 
         $response = $this->post('/login', [
             'email' => 'admin@example.com',
-            'password' => 'password',
+            'password' => 'admin',
         ]);
 
         $response->assertRedirect('/admin');
@@ -37,7 +37,7 @@ class AuthTest extends TestCase
     {
         User::factory()->create([
             'email' => 'admin@example.com',
-            'password' => 'password',
+            'password' => 'admin',
         ]);
 
         $response = $this->from('/login')->post('/login', [

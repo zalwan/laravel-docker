@@ -79,7 +79,7 @@ php artisan db:seed --force
 The default admin seed creates:
 
 ```text
-admin@example.com / password
+admin@example.com / admin
 ```
 
 Change this account immediately in production or replace it with a production-only user creation process.

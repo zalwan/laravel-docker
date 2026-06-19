@@ -23,7 +23,7 @@ Default user dari seeder:
 
 ```text
 email: admin@example.com
-password: password
+password: admin
 ```
 
 Ganti kredensial ini sebelum production.

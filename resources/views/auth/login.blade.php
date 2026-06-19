@@ -10,6 +10,12 @@
                     <h1 class="h3 fw-bold mb-2">Login Admin</h1>
                     <p class="text-muted mb-4">Masuk untuk mengelola konten BAWANA.</p>
 
+                    <div class="alert alert-primary border-0 bg-primary bg-opacity-10 text-primary" role="note">
+                        <div class="fw-semibold mb-1">Sample admin account</div>
+                        <div class="small">Email: <span class="fw-semibold">admin@example.com</span></div>
+                        <div class="small">Password: <span class="fw-semibold">admin</span></div>
+                    </div>
+
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">{{ session('status') }}</div>
                     @endif
