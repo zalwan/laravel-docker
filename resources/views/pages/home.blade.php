@@ -17,7 +17,7 @@
                     @endforeach
                 </div>
                 <div class="d-flex gap-3">
-                    <a href="{{ route('services') }}" class="btn btn-primary btn-lg px-4">Explore Services</a>
+                    <a href="{{ route('products.index') }}" class="btn btn-primary btn-lg px-4">Explore Product</a>
                     <a href="{{ route('about') }}" class="btn btn-outline-secondary btn-lg px-4">Company Profile</a>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                 <div class="col-lg-7">
                     <h2 class="fw-bold mb-3">3-in-1 Digital Learning Solution</h2>
                     <p class="text-muted mb-0">
-                        BAWANA menggabungkan learning platform, learning content, dan customer success service dalam satu ekosistem pembelajaran digital untuk mempercepat upskilling dan reskilling karyawan.
+                        BAWANA menggabungkan learning platform, learning content, dan customer success dalam satu ekosistem pembelajaran digital untuk mempercepat upskilling dan reskilling karyawan.
                     </p>
                 </div>
                 <div class="col-lg-5">

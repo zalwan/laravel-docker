@@ -3,6 +3,8 @@
 namespace Tests\Feature;
 
 use App\Models\CompanyContent;
+use App\Models\Product;
+use App\Models\Article;
 use Database\Seeders\CompanyContentSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -28,8 +30,8 @@ class ExampleTest extends TestCase
 
         $pages = [
             '/about' => 'Tentang BAWANA',
-            '/services' => 'Produk',
-            '/articles' => 'Artikel',
+            '/products' => 'Product',
+            '/articles' => 'Article',
             '/contents' => 'Dynamic Contents',
             '/contact' => 'PT Meta BAWANA Indonesia',
         ];
@@ -82,6 +84,11 @@ class ExampleTest extends TestCase
         $this->get('/contents?page=2')->assertStatus(200);
     }
 
+    public function test_legacy_services_route_redirects_to_products(): void
+    {
+        $this->get('/services')->assertRedirect('/products');
+    }
+
     public function test_dynamic_content_detail_page_is_available(): void
     {
         $this->seed(CompanyContentSeeder::class);
@@ -98,7 +105,7 @@ class ExampleTest extends TestCase
 
     public function test_public_articles_page_lists_published_articles(): void
     {
-        \App\Models\Article::create([
+        Article::create([
             'title' => 'Published Insight',
             'slug' => 'published-insight',
             'excerpt' => 'Published article excerpt',
@@ -106,7 +113,7 @@ class ExampleTest extends TestCase
             'status' => 'published',
             'published_at' => now(),
         ]);
-        \App\Models\Article::create([
+        Article::create([
             'title' => 'Draft Insight',
             'slug' => 'draft-insight',
             'body' => 'Draft article body',
@@ -122,5 +129,31 @@ class ExampleTest extends TestCase
         $this->get('/articles/published-insight')
             ->assertStatus(200)
             ->assertSee('Published article body');
+    }
+
+    public function test_public_products_page_uses_active_products(): void
+    {
+        Product::create([
+            'name' => 'Active Product',
+            'slug' => 'active-product',
+            'description' => 'Active product description',
+            'status' => 'active',
+        ]);
+        Product::create([
+            'name' => 'Inactive Product',
+            'slug' => 'inactive-product',
+            'description' => 'Inactive product description',
+            'status' => 'inactive',
+        ]);
+
+        $response = $this->get('/products');
+
+        $response->assertStatus(200);
+        $response->assertSee('Active Product');
+        $response->assertDontSee('Inactive Product');
+
+        $this->get('/products/active-product')
+            ->assertStatus(200)
+            ->assertSee('Active product description');
     }
 }

@@ -6,7 +6,7 @@
 <article class="container my-5">
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            <a href="{{ route('articles.index') }}" class="text-decoration-none mb-4 d-inline-block">Kembali ke Artikel</a>
+            <a href="{{ route('articles.index') }}" class="text-decoration-none mb-4 d-inline-block">Kembali ke Article</a>
 
             <div class="card soft-card">
                 <div class="card-body p-4 p-md-5">

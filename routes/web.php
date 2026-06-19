@@ -12,12 +12,14 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ProductPublicController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
-Route::get('/services', [ServiceController::class, 'index'])->name('services');
+Route::redirect('/services', '/products')->name('services');
+Route::get('/products', [ProductPublicController::class, 'index'])->name('products.index');
+Route::get('/products/{product:slug}', [ProductPublicController::class, 'show'])->name('products.show');
 Route::get('/articles', [ArticlePublicController::class, 'index'])->name('articles.index');
 Route::get('/articles/{article:slug}', [ArticlePublicController::class, 'show'])->name('articles.show');
 Route::get('/contents', [ContentController::class, 'index'])->name('contents');

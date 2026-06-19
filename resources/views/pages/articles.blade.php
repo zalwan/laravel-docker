@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title', 'Artikel - BAWANA')
+@section('title', 'Article - BAWANA')
 
 @section('content')
 <div class="container my-5">
     <div class="section-title text-center mx-auto mb-5">
-        <h1 class="fw-bold display-5 mb-3">Artikel</h1>
+        <h1 class="fw-bold display-5 mb-3">Article</h1>
         <p class="lead text-muted">
             Insight seputar digital learning, employee development, dan implementasi platform pembelajaran perusahaan.
         </p>
@@ -20,7 +20,7 @@
                         </div>
                         <h2 class="h5 fw-bold mb-3">{{ $article->title }}</h2>
                         <p class="text-muted flex-grow-1">{{ $article->excerpt ?? str($article->body)->limit(140) }}</p>
-                        <a href="{{ route('articles.show', $article) }}" class="btn btn-primary mt-3">Baca Artikel</a>
+                        <a href="{{ route('articles.show', $article->slug) }}" class="btn btn-primary mt-3">Baca Article</a>
                     </div>
                 </div>
             </div>

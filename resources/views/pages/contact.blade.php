@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="d-flex gap-2">
-                        <a href="{{ route('services') }}" class="btn btn-primary">Lihat Services</a>
+                        <a href="{{ route('products.index') }}" class="btn btn-primary">Lihat Product</a>
                         <a href="{{ route('home') }}" class="btn btn-outline-secondary">Kembali ke Home</a>
                     </div>
                 </div>
