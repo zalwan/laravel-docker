@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CompanyProfileController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContentController;
@@ -26,4 +27,5 @@ Route::middleware('admin.auth')->prefix('admin')->name('admin.')->group(function
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('profile', CompanyProfileController::class)->except(['show']);
     Route::resource('articles', ArticleController::class)->except(['show']);
+    Route::resource('products', ProductController::class)->except(['show']);
 });
