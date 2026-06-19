@@ -7,6 +7,36 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## BAWANA Company Profile
+
+BAWANA Company Profile adalah aplikasi Laravel untuk website company profile dan admin panel sederhana. Aplikasi publik menampilkan profil perusahaan, services, dynamic contents, dan kontak. Admin panel menyediakan login manual, dashboard, CRUD company profile content, article, product, gallery upload, dan export PDF report.
+
+## Admin Panel
+
+URL admin:
+
+```text
+http://localhost:8080/admin
+```
+
+Default user dari seeder:
+
+```text
+email: admin@example.com
+password: password
+```
+
+Ganti kredensial ini sebelum production.
+
+Fitur admin:
+
+- Dashboard summary
+- Company Profile CRUD
+- Article CRUD
+- Product CRUD
+- Gallery CRUD dan upload image
+- PDF report export
+
 ## Docker Setup
 
 Project ini bisa dijalankan penuh lewat Docker dengan stack `nginx`, `php-fpm`, `mysql`, dan optional `node` untuk Vite.
@@ -68,12 +98,25 @@ docker compose exec app composer install
 docker compose run --rm node sh -c "if [ -f package-lock.json ]; then npm ci; else npm install --no-package-lock; fi && npm run build"
 ```
 
+### Quality Check
+
+```bash
+docker compose exec app php artisan test
+docker compose exec app composer audit --no-dev
+```
+
+Pada snapshot saat dokumentasi ini dibuat, test suite lulus. `composer audit --no-dev` masih perlu ditindaklanjuti jika dependency lock belum diperbarui ke versi patched terbaru.
+
 ### Reset environment Docker
 
 ```bash
 docker compose down -v
 docker compose up -d --build
 ```
+
+## Deployment
+
+Lihat [Deployment Guide](docs/deployment-guide.md) untuk checklist production.
 
 ## About Laravel
 
